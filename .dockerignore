@@ -1,0 +1,19 @@
+# Git 관련 파일 제외
+.git
+
+# Maven 빌드 아티팩트 제외
+target/
+
+# IDE 관련 파일 제외
+.idea/
+.vscode/
+
+# 로그 파일 제외
+*.log
+
+# Maven Wrapper 제외
+mvnw
+mvnw.cmd
+
+# Markdown 파일 제외
+*.md
