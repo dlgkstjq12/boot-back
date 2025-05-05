@@ -1,18 +1,22 @@
 package com.maple.mapleBack.controller;
 
-import com.maple.mapleBack.service.ExternalApiService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
+import com.maple.mapleBack.service.ExternalApiService;
 
 @RestController
 @RequestMapping("/api")
 public class ApiController {
-    
+
     private static final Logger logger = LoggerFactory.getLogger(ApiController.class);
 
     private final ExternalApiService externalApiService;
@@ -20,10 +24,11 @@ public class ApiController {
     public ApiController(ExternalApiService externalApiService) {
         this.externalApiService = externalApiService;
     }
-    
+
     @GetMapping("/testUrl")
-    public void testApi() {
+    public String testApi() {
         logger.debug("url 연결 테스트");
+        return "실행완료";
     }
 
     @PostMapping("/chraInfo")
