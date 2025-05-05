@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BootMapleBackApplication {
 
 	public static void main(String[] args) {
+        System.out.println("### Active Profile: " + System.getProperty("spring.profiles.active"));
 		SpringApplication.run(BootMapleBackApplication.class, args);
 	}
 
