@@ -1,8 +1,14 @@
-# 1. Java 17이 포함된 베이스 이미지 선택
+# Java 17 기반 이미지
 FROM openjdk:17-jdk-slim
 
-# 2. JAR 파일을 컨테이너에 복사
-COPY target/boot-maple-back.jar /app.jar
+# JAR 복사할 디렉토리 설정
+WORKDIR /app
 
-# 3. JAR 파일 실행
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# 빌드된 jar 파일을 컨테이너로 복사
+COPY target/boot-maple-back.jar app.jar
+
+# 포트 열기 (Spring Boot 기본 포트)
+EXPOSE 8080
+
+# 앱 실행
+CMD ["java", "-jar", "app.jar"]
