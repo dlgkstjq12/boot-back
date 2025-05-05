@@ -1,14 +1,12 @@
-# Java 17 기반 이미지
-FROM openjdk:17-jdk-slim
-
-# JAR 복사할 디렉토리 설정
+# 1단계: 빌드
+FROM openjdk:17-jdk-slim AS build
 WORKDIR /app
+COPY . .
+RUN ./mvnw clean package -DskipTests
 
-# 빌드된 jar 파일을 컨테이너로 복사
-COPY target/boot-maple-back.jar app.jar
-
-# 포트 열기 (Spring Boot 기본 포트)
+# 2단계: 실행
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY --from=build /app/target/boot-maple-back.jar app.jar
 EXPOSE 8080
-
-# 앱 실행
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
