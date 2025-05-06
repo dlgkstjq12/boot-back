@@ -1,4 +1,4 @@
-package com.maple.mapleBack;
+package com.api.bootBack;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

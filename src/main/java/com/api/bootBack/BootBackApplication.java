@@ -1,13 +1,13 @@
-package com.maple.mapleBack;
+package com.api.bootBack;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BootMapleBackApplication {
+public class BootBackApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BootMapleBackApplication.class, args);
+        SpringApplication.run(BootBackApplication.class, args);
     }
 
 }
