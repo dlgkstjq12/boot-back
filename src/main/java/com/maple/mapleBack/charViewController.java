@@ -8,7 +8,7 @@ public class charViewController {
 
     @GetMapping("/") // 루트 경로로 GET 요청이 들어오면 실행됨
     public String hello() {
-        return "Spring-Boot-BackEnd";
+        return "Spring-Boot-BackEnd-start";
     }
 
 }
