@@ -1,4 +1,4 @@
-package com.api.bootBack.service.mapleProject;
+package com.api.bootBack.mapleProject.service;
 
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
