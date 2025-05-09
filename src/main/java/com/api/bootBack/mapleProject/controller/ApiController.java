@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.api.bootBack.mapleProject.service.ExternalApiService;
 
-@RestController
 @RequestMapping("/mapleApi")
+@RestController("mapleApiController")
 //메이플 프로젝트 관련 API 컨트롤러
 public class ApiController {
 

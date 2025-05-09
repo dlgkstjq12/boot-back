@@ -1,18 +1,21 @@
 package com.api.bootBack.mapleProject.service;
 
-import org.springframework.http.*;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
 import java.util.HashMap;
 import java.util.Map;
 
-@Service
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service("mapleExternalApiService")
 public class ExternalApiService {
 
     private final RestTemplate restTemplate = new RestTemplate();
-    
-    //캐릭터 정보 가져오기위한 send
+
+    // 캐릭터 정보 가져오기위한 send
     public Map<String, Object> sendToCharInfoOpenApi(String name) {
         String apiUrl = "https://api.publicapis.org/entries"; // 예시 API
 
