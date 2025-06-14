@@ -3,11 +3,14 @@ package com.api.bootBack.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.api.bootBack.dto.UserDto;
 import com.api.bootBack.mapper.UserMapper;
+
+import io.github.resilience4j.retry.annotation.Retry;
 
 @Service
 public class UserService {
@@ -23,6 +26,7 @@ public class UserService {
         return userMapper.findById(id);
     }
 
+    @Retry(name = "mybatis-retry", fallbackMethod = "fallbackUsers")
     public List<UserDto> getAllUsers() {
         return userMapper.findAll();
     }
@@ -39,5 +43,10 @@ public class UserService {
         String hashedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
         user.setPassword(hashedPassword);
 
+    }
+
+    public List<UserDto> fallbackUsers(Exception e) {
+        System.out.println("Fallback due to DB error: " + e.getMessage());
+        return List.of(); // 기본 빈 리스트 반환
     }
 }
